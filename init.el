@@ -19,6 +19,7 @@
     buffer-move
     go-mode
     python-mode
+    haskell-mode
     ) "Default packages")
 
 ;; Check if all packages are installed
