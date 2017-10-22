@@ -86,6 +86,9 @@
 ;; Unix line endings
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
+;; Use spaces
+(setq-default indent-tabs-mode nil)
+
 ;; Set font (windows)
 (set-face-attribute 'default nil :family "Consolas" :height 110)
 ;; (set-face-attribute 'default nil :height 110) ; linux
@@ -93,6 +96,13 @@
 ;; Disable start screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq-default
+	     tab-width 2
+	     standard-indent 2)))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
