@@ -67,8 +67,13 @@
 
 (evilnc-default-hotkeys)
 
-;; Disable the menu bar
+;; Disable the UI elements
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(set-fringe-mode 0)
+(toggle-scroll-bar -1)
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
 
 ;; Disable backup files and auto save files
 (setq make-backup-files nil)
@@ -91,18 +96,15 @@
 
 ;; Set font (windows)
 (set-face-attribute 'default nil :family "Consolas" :height 110)
-;; (set-face-attribute 'default nil :height 110) ; linux
 
 ;; Disable start screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
+;; Run gofmt on save
 (add-hook 'go-mode-hook
           (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            (setq-default
-	     tab-width 2
-	     standard-indent 2)))
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -113,11 +115,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe-mode 0 nil (fringe))
- '(package-selected-packages
-   (quote
-    (python-mode rust-mode helm go-mode evil-nerd-commenter drag-stuff buffer-move base16-theme autopair auto-complete)))
- '(tool-bar-mode nil))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
