@@ -4,8 +4,8 @@
 (require 'package)
 
 (setq package-archives
-  '(("gnu" . "https://elpa.gnu.org/packages/")
-    ("melpa" . "https://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
@@ -18,7 +18,6 @@
     evil-nerd-commenter
     buffer-move
     go-mode
-    python-mode
     haskell-mode
     ) "Default packages")
 
@@ -26,8 +25,8 @@
 (require 'cl)
 (defun packages-installed-p ()
   (loop for p in required-packages
-     when (not (package-installed-p p)) do (return nil)
-     finally (return t)))
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
 
 ;; If not all packages are installed, refresh package database
 ;; and install the missing ones.
