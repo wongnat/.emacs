@@ -4,8 +4,8 @@
 (require 'package)
 
 (setq package-archives
-  '(("gnu" . "https://elpa.gnu.org/packages/")
-    ("melpa" . "https://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
@@ -18,7 +18,6 @@
     evil-nerd-commenter
     buffer-move
     go-mode
-    python-mode
     haskell-mode
     ) "Default packages")
 
@@ -26,8 +25,8 @@
 (require 'cl)
 (defun packages-installed-p ()
   (loop for p in required-packages
-     when (not (package-installed-p p)) do (return nil)
-     finally (return t)))
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
 
 ;; If not all packages are installed, refresh package database
 ;; and install the missing ones.
@@ -67,8 +66,13 @@
 
 (evilnc-default-hotkeys)
 
-;; Disable the menu bar
+;; Disable the UI elements
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(set-fringe-mode 0)
+(toggle-scroll-bar -1)
+(setq-default header-line-format mode-line-format)
+(setq-default mode-line-format nil)
 
 ;; Disable backup files and auto save files
 (setq make-backup-files nil)
@@ -86,13 +90,20 @@
 ;; Unix line endings
 (setq-default buffer-file-coding-system 'utf-8-unix)
 
-;; Set font (windows)
-;;(set-face-attribute 'default nil :family "Consolas" :height 110)
-(set-face-attribute 'default nil :height 110) ; linux
+;; Use spaces
+(setq-default indent-tabs-mode nil)
+
+;; Set font
+(set-face-attribute 'default nil :height 110)
 
 ;; Disable start screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+;; Run gofmt on save
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -103,8 +114,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe-mode 0 nil (fringe))
- '(tool-bar-mode nil))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
