@@ -123,12 +123,9 @@
 
 ;; Buffer nav
 (use-package avy
-  :config 
+  :config
     (global-set-key (kbd "C-:") 'avy-goto-char)
-    (global-set-key (kbd "C-'") 'avy-goto-char-2)
-    (global-set-key (kbd "M-g f") 'avy-goto-line)
-    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
-    (global-set-key (kbd "M-g e") 'avy-goto-word-0))
+    (global-set-key (kbd "C-'") 'avy-goto-char-2))
 
 ;; Project nav
 (use-package projectile
@@ -337,3 +334,18 @@
 
 ;; ================================================================================================
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("443e2c3c4dd44510f0ea8247b438e834188dc1c6fb80785d83ad3628eadf9294" "2e05569868dc11a52b08926b4c1a27da77580daa9321773d92822f7a639956ce" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" "251ed7ecd97af314cd77b07359a09da12dcd97be35e3ab761d4a92d8d8cf9a71" "b99e334a4019a2caa71e1d6445fc346c6f074a05fcbb989800ecbe54474ae1b0" default))
+ '(package-selected-packages
+   '(orderless marginalia consult vertico projectile ace-window super-save magit which-key crux undo-tree easy-kill multiple-cursors expand-region format-all flycheck doom-modeline doom-themes use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
