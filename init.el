@@ -3,6 +3,10 @@
 ;; ================================================================================================
 ;; Vanilla Emacs settings
 
+;; TODO: this doesn't work!
+;; OS title bar settings
+;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; Disable the UI elements
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -20,12 +24,13 @@
 (setq auto-save-default nil)
 
 ;; Disable windows beep
-;; (setq visible-bell 1)
+(setq visible-bell 1)
 
 ;; Show line numbers
 ;; TODO: add more margin between text and line numbers
-(global-display-line-numbers-mode)
-;; Show column number
+;; (global-display-line-numbers-mode)
+
+;; Show column number in mode line
 (setq column-number-mode t)
 
 ;; Automatic pairing
@@ -71,15 +76,15 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-zenburn t)
-
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config))
+  (load-theme 'doom-zenburn t))
 
 (use-package doom-modeline
-  :init (doom-modeline-mode 1))
+  :init
+    (setq doom-modeline-icon nil)
+    (doom-modeline-mode 1))
 
-(use-package all-the-icons)
+;; Icons for mode line
+;; (use-package all-the-icons)
 
 ;; Editing
 (use-package flycheck
@@ -91,6 +96,10 @@
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 
+(use-package multiple-cursors
+  :config
+    (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines))
+
 (use-package easy-kill
   :config (global-set-key [remap kill-ring-save] 'easy-kill))
 
@@ -98,17 +107,18 @@
   :init  (setq undo-tree-auto-save-history nil)
   :config (global-undo-tree-mode))
 
-;; Git interface
-(use-package magit)
-
-(use-package diff-hl
-  :config (global-diff-hl-mode))
-
 ;; Helpers
 (use-package crux)
 
 (use-package which-key
   :init (which-key-mode))
+
+;; Git interface
+(use-package magit)
+
+;; TODO: Do I need this?
+;; (use-package diff-hl
+;;   :config (global-diff-hl-mode))
 
 ;; Auto-save
 (use-package super-save
@@ -123,7 +133,13 @@
   :config (global-set-key (kbd "M-o") 'ace-window))
 
 ;; Buffer nav
-(use-package avy)
+(use-package avy
+  :config 
+    (global-set-key (kbd "C-:") 'avy-goto-char)
+    (global-set-key (kbd "C-'") 'avy-goto-char-2)
+    (global-set-key (kbd "M-g f") 'avy-goto-line)
+    (global-set-key (kbd "M-g w") 'avy-goto-word-1)
+    (global-set-key (kbd "M-g e") 'avy-goto-word-0))
 
 ;; Project nav
 (use-package projectile
@@ -331,3 +347,4 @@
 (load-file "~/.emacs.d/odin-mode.el")
 
 ;; ================================================================================================
+
