@@ -3,10 +3,6 @@
 ;; ================================================================================================
 ;; Vanilla Emacs settings
 
-;; TODO: this doesn't work!
-;; OS title bar settings
-;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
-
 ;; Disable the UI elements
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -25,10 +21,6 @@
 
 ;; Disable windows beep
 (setq visible-bell 1)
-
-;; Show line numbers
-;; TODO: add more margin between text and line numbers
-;; (global-display-line-numbers-mode)
 
 ;; Show column number in mode line
 (setq column-number-mode t)
@@ -82,9 +74,6 @@
   :init
     (setq doom-modeline-icon nil)
     (doom-modeline-mode 1))
-
-;; Icons for mode line
-;; (use-package all-the-icons)
 
 ;; Editing
 (use-package flycheck
