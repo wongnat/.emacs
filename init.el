@@ -26,8 +26,8 @@
 (setq column-number-mode t)
 
 ;; Automatic pairing
-(show-paren-mode)
-(electric-pair-mode)
+(show-paren-mode 1)
+(electric-pair-mode 1)
 
 ;; Unix line endings
 (setq-default buffer-file-coding-system 'utf-8-unix)
@@ -104,10 +104,6 @@
 
 ;; Git interface
 (use-package magit)
-
-;; TODO: Do I need this?
-;; (use-package diff-hl
-;;   :config (global-diff-hl-mode))
 
 ;; Auto-save
 (use-package super-save
@@ -330,7 +326,14 @@
 ;; ================================================================================================
 ;; Custom config (required packages not distributed in a repository)
 
+;; Odin
 (load-file "~/.emacs.d/odin-mode.el")
+
+;; Erlang
+(setq load-path (cons  "C:/Program Files/Erlang OTP/lib/tools-3.5.3/emacs" load-path))
+(setq erlang-root-dir "C:/Program Files/Erlang OTP")
+(setq exec-path (cons "C:/Program Files/Erlang OTP/bin" exec-path))
+(require 'erlang-start)
 
 ;; ================================================================================================
 
