@@ -13,7 +13,7 @@
 (setq inhibit-startup-message t)
 
 ;; Set font (windows)
-(set-face-attribute 'default nil :family "Consolas" :height 110)
+(set-face-attribute 'default nil :font "Consolas-11")
 
 ;; Disable backup files and auto save files
 (setq make-backup-files nil)
